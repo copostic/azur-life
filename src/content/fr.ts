@@ -27,12 +27,6 @@ export const fr = {
     ],
   },
 
-  expertBadge: {
-    caption: 'Expert judiciaire',
-    sub: 'près la Cour d\'appel<br>d\'Aix-en-Provence',
-    alt: 'Sceau officiel — Cour d\'appel, Expert judiciaire',
-  },
-
   hero: {
     variants: {
       default: {
@@ -260,7 +254,7 @@ export const fr = {
   },
 
   form: {
-    kicker: 'CONCIERGE REQUEST',
+    kicker: 'PRISE DE CONTACT',
     title: 'Consultation Privée',
     lead: 'Confiez vos besoins d\'évaluation à notre expertise indépendante et discrète. Natalia vous rappelle personnellement sous 24 heures.',
     fields: {

@@ -74,13 +74,13 @@ Sur Cloudflare Pages / Netlify / Vercel : ces variables se configurent dans le d
 
 **Décision documentée à valider.** La masterclass mentionne un **call asset** Google Ads au numéro `06 23 53 19 59`. Le fichier `azur life.md` mentionne :
 - standard agence : `04 93 16 06 31`
-- mobile direct Natalia : `+33 6 23 53 19 55` (à un chiffre près du call asset)
+- mobile direct Natalia : `+33 6 23 53 19 53` (à un chiffre près du call asset)
 
 **Choix pour les landing pages :** CTA principal = `06 23 53 19 59` (call-asset parity), parce que Google Ads attribue précisément les appels qui passent par ce numéro. Le standard agence reste affiché dans le bandeau "Contact" en bas de page pour les visiteurs qui veulent l'office.
 
 **À faire côté client :**
 1. **Confirmer** que `06 23 53 19 59` est bien le numéro suivi dans les ads (et qu'il sonne sur le bon poste).
-2. **Confirmer** que WhatsApp est activé sur `+33 6 23 53 19 59` (sinon utiliser `…55`, le mobile direct Natalia, mis à jour dans `.env` via `PUBLIC_WHATSAPP=33623531955`).
+2. **Confirmer** que WhatsApp est activé sur `+33 6 23 53 19 59` (sinon utiliser `…53`, le mobile direct Natalia, mis à jour dans `.env` via `PUBLIC_WHATSAPP=33623531953`).
 3. Si conflit, mettre à jour `.env` — pas besoin de toucher au code.
 
 ---
@@ -186,7 +186,7 @@ Alternatives identiques en simplicité : Netlify, Vercel, OVH "Web Static".
 | **GA4 measurement ID** | créer la propriété GA4, coller `PUBLIC_GA4_ID` |
 | **Google Ads conversion ID + 3 labels** | créer 3 conversions (Form, Appel, WhatsApp) — cf. masterclass §2.1 |
 | **Form backend** | choisir Formspree / Apps Script / webhook CRM → URL dans `PUBLIC_FORM_ENDPOINT`. Tant qu'il n'est pas branché, le form simule un succès en console (pour QA tracking). |
-| **Confirmer WhatsApp** sur `+33 6 23 53 19 59` | si non, mettre `…55` dans `PUBLIC_WHATSAPP` |
+| **Confirmer WhatsApp** sur `+33 6 23 53 19 59` | si non, mettre `…53` dans `PUBLIC_WHATSAPP` |
 | **Pages légales** | `/mentions-legales` et `/politique-confidentialite` sont des liens placeholder dans le footer — à créer (peut être sur le site principal `azur-life.com`) |
 | **Domaine** | déployer sur `landing.azur-life.com` (sous-domaine dédié recommandé pour ne pas toucher au site principal) |
 
