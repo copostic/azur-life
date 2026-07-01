@@ -1,0 +1,82 @@
+---
+interface Props {
+  ariaLabel?: string;
+}
+const { ariaLabel = 'Управление недвижимостью — иллюстрация' } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 520 380"
+  role="img"
+  aria-label={ariaLabel}
+  class="stewardship"
+>
+  <defs>
+    <pattern id="sw-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.16" />
+    </pattern>
+  </defs>
+  <rect width="520" height="380" fill="url(#sw-grid)" />
+
+  <!-- Sea waves -->
+  <path d="M 0 350 Q 60 340 120 350 T 240 350 T 360 350 T 520 350"
+    fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.55" />
+  <path d="M 0 365 Q 60 358 120 365 T 240 365 T 360 365 T 520 365"
+    fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.35" />
+
+  <!-- Villa -->
+  <g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="120" y="190" width="280" height="130" />
+    <path d="M 100 190 L 260 110 L 420 190 Z" />
+    <path d="M 340 150 L 340 120 L 360 120 L 360 162" />
+    <rect x="240" y="245" width="40" height="75" />
+    <rect x="150" y="215" width="50" height="50" />
+    <line x1="175" y1="215" x2="175" y2="265" stroke-width="0.8" />
+    <line x1="150" y1="240" x2="200" y2="240" stroke-width="0.8" />
+    <rect x="320" y="215" width="50" height="50" />
+    <line x1="345" y1="215" x2="345" y2="265" stroke-width="0.8" />
+    <line x1="320" y1="240" x2="370" y2="240" stroke-width="0.8" />
+    <line x1="60" y1="320" x2="460" y2="320" />
+  </g>
+
+  <!-- Padlock (steward / safekeeping) -->
+  <g transform="translate(100 100)" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linejoin="round">
+    <rect x="-14" y="0" width="28" height="22" rx="2" />
+    <path d="M -8 0 L -8 -8 a 8 8 0 0 1 16 0 L 8 0" />
+    <circle cx="0" cy="11" r="2" fill="currentColor" />
+    <line x1="0" y1="13" x2="0" y2="17" />
+  </g>
+
+  <!-- Monthly report tab -->
+  <g transform="translate(380 70)" stroke="currentColor" fill="none" stroke-width="1.4" stroke-linejoin="round">
+    <path d="M 0 0 L 60 0 L 70 10 L 70 70 L 0 70 Z" />
+    <path d="M 60 0 L 60 10 L 70 10" />
+    <line x1="10" y1="22" x2="60" y2="22" stroke-width="0.9" />
+    <line x1="10" y1="32" x2="60" y2="32" stroke-width="0.9" opacity="0.7" />
+    <line x1="10" y1="42" x2="60" y2="42" stroke-width="0.9" opacity="0.7" />
+    <line x1="10" y1="52" x2="40" y2="52" stroke-width="0.9" opacity="0.7" />
+    <text x="35" y="14" text-anchor="middle" font-family="var(--font-mono)" font-size="7" fill="currentColor">CR · MENSUEL</text>
+  </g>
+
+  <!-- Speech bubble (NOT WhatsApp glyph, generic text-bubble) -->
+  <g transform="translate(440 250)" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M -28 -22 L 28 -22 a 6 6 0 0 1 6 6 L 34 8 a 6 6 0 0 1 -6 6 L 4 14 L -8 26 L -8 14 L -28 14 a 6 6 0 0 1 -6 -6 L -34 -16 a 6 6 0 0 1 6 -6 Z" />
+    <circle cx="-14" cy="-4" r="1.6" fill="currentColor" />
+    <circle cx="0" cy="-4" r="1.6" fill="currentColor" />
+    <circle cx="14" cy="-4" r="1.6" fill="currentColor" />
+  </g>
+
+  <!-- Reference code -->
+  <text x="120" y="350" font-family="var(--font-mono)" font-size="9" fill="currentColor" letter-spacing="2">REF · AL-PM-2026</text>
+</svg>
+
+<style>
+  .stewardship {
+    width: 100%;
+    height: auto;
+    color: var(--color-riviera);
+    max-width: 560px;
+    display: block;
+  }
+</style>

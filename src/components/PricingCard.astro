@@ -1,0 +1,89 @@
+---
+interface Props {
+  type: string;
+  priceFrom: string;
+  period: string;
+  vat: string;
+  bullets: readonly string[];
+  highlight?: boolean;
+  ctaLabel: string;
+  ctaHref: string;
+  ctaTarget?: string;
+  ctaRel?: string;
+}
+const {
+  type,
+  priceFrom,
+  period,
+  vat,
+  bullets,
+  highlight = false,
+  ctaLabel,
+  ctaHref,
+  ctaTarget,
+  ctaRel,
+} = Astro.props;
+---
+
+<article class={`pricing-card reveal ${highlight ? 'is-highlight' : ''}`}>
+  {highlight && <span class="ribbon">Популярно</span>}
+  <header>
+    <h3>{type}</h3>
+    <div class="price">
+      <span class="from">{priceFrom}</span>
+      <span class="period">{period}</span>
+    </div>
+    <p class="vat">{vat}</p>
+  </header>
+  <ul role="list">
+    {bullets.map((b) => (
+      <li>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 8.5 L6.5 12 L13 4.5"/>
+        </svg>
+        <span>{b}</span>
+      </li>
+    ))}
+  </ul>
+  <a class={`btn ${highlight ? 'btn-primary' : 'btn-secondary'}`} href={ctaHref} target={ctaTarget} rel={ctaRel}>
+    {ctaLabel}
+  </a>
+</article>
+
+<style>
+  .pricing-card {
+    position: relative;
+    background: var(--color-paper);
+    border: 1px solid var(--color-mist);
+    border-radius: var(--radius-card);
+    padding: 2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .pricing-card.is-highlight {
+    border-color: var(--color-riviera);
+    box-shadow: 0 12px 36px -16px rgba(27, 75, 90, 0.35);
+  }
+  .ribbon {
+    position: absolute;
+    top: -12px;
+    right: 16px;
+    background: var(--color-seal);
+    color: var(--color-paper);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+  }
+  .pricing-card h3 { margin: 0 0 0.4rem; font-size: 1.3rem; }
+  .price { display: flex; align-items: baseline; gap: 0.4rem; }
+  .from { font-family: var(--font-display); font-weight: 700; font-size: 2rem; color: var(--color-riviera); }
+  .period { color: var(--color-brass); font-family: var(--font-mono); font-size: 0.85rem; }
+  .vat { margin: 0.2rem 0 0; color: #3a4a45; font-size: 0.85rem; }
+  .pricing-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .pricing-card li { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.95rem; line-height: 1.5; color: var(--color-ink); }
+  .pricing-card li svg { width: 16px; height: 16px; color: var(--color-riviera); flex-shrink: 0; margin-top: 4px; }
+</style>

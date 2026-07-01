@@ -1,0 +1,356 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import Hero from '~/components/Hero.astro';
+import StewardshipVilla from '~/components/StewardshipVilla.astro';
+import ProcessSteps from '~/components/ProcessSteps.astro';
+import PricingCard from '~/components/PricingCard.astro';
+import FAQ from '~/components/FAQ.astro';
+import LeadForm from '~/components/LeadForm.astro';
+import ContactStrip from '~/components/ContactStrip.astro';
+import StickyMobileCTA from '~/components/StickyMobileCTA.astro';
+import CookieBanner from '~/components/CookieBanner.astro';
+
+import { ru } from '~/content/ru';
+import { SITE, ROUTES, WHATSAPP } from '~/lib/constants';
+import {
+  realEstateAgent,
+  faqPage,
+  breadcrumb,
+  propertyManagementOffer,
+} from '~/lib/schema';
+
+const canonical = SITE.url + ROUTES.ru;
+
+const jsonLd = [
+  realEstateAgent('ru'),
+  propertyManagementOffer(),
+  faqPage(ru.faq.items.map((i) => ({ q: i.q, a: i.a }))),
+  breadcrumb([
+    { name: 'Главная', url: SITE.url + '/' },
+    { name: 'Управление недвижимостью', url: canonical },
+  ]),
+];
+
+const waPrefill = ru.hero.waPrefill;
+---
+
+<BaseLayout
+  lang="ru"
+  title={ru.meta.title}
+  description={ru.meta.description}
+  canonical={canonical}
+  ogImage={ru.meta.ogImage}
+  jsonLd={jsonLd}
+>
+  <Header
+    slot="header"
+    metaLine={ru.header.metaLine}
+    primary="whatsapp"
+    primaryLabel={ru.header.ctaWhatsApp}
+    secondaryLabel={ru.header.ctaSecondary}
+    secondaryHref="#lead-form"
+    waPrefill={waPrefill}
+  />
+
+  <!-- HERO -->
+  <Hero
+    staticHero={{
+      eyebrow: ru.hero.eyebrow,
+      h1Html: ru.hero.h1Html,
+      sub: ru.hero.sub,
+    }}
+    trustPills={ru.trustPills}
+    primary="whatsapp"
+    primaryLabel={ru.hero.ctaWhatsApp}
+    secondaryLabel={ru.hero.ctaCall}
+    microCopy={ru.hero.waMicroCopy}
+    waPrefill={waPrefill}
+    ringText="AZUR · LIFE · УПРАВЛЕНИЕ · НЕДВИЖИМОСТЬЮ · BEAULIEU · "
+    formAnchor="#lead-form"
+  >
+    <StewardshipVilla slot="illustration" />
+  </Hero>
+
+  <!-- ПУНКТ 01 — что это, и чем не является -->
+  <section class="section section-paper" id="not-airbnb">
+    <div class="container-page">
+      <header class="section-head">
+        <p class="eyebrow">{ru.notAirbnb.kicker}</p>
+        <h2>{ru.notAirbnb.title}</h2>
+        <p class="section-lead">{ru.notAirbnb.lead}</p>
+      </header>
+
+      <div class="dual-col">
+        <div class="col yes reveal">
+          <h3>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"/></svg>
+            {ru.notAirbnb.yesTitle}
+          </h3>
+          <ul role="list">
+            {ru.notAirbnb.yes.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="col no reveal">
+          <h3>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            {ru.notAirbnb.noTitle}
+          </h3>
+          <ul role="list">
+            {ru.notAirbnb.no.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПУНКТ 02 — services -->
+  <section class="section section-limestone" id="services">
+    <div class="container-page">
+      <header class="section-head">
+        <p class="eyebrow">{ru.services.kicker}</p>
+        <h2>{ru.services.title}</h2>
+      </header>
+      <div class="services-grid">
+        {ru.services.items.map((it) => (
+          <article class="card reveal">
+            <h3>{it.title}</h3>
+            <p>{it.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ПУНКТ 03 — pricing -->
+  <section class="section section-paper" id="pricing">
+    <div class="container-page">
+      <header class="section-head">
+        <p class="eyebrow">{ru.pricing.kicker}</p>
+        <h2>{ru.pricing.title}</h2>
+        <p class="section-lead">{ru.pricing.lead}</p>
+      </header>
+      <div class="pricing-grid">
+        {ru.pricing.cards.map((c) => (
+          <PricingCard
+            type={c.type}
+            priceFrom={c.priceFrom}
+            period={c.period}
+            vat={c.vat}
+            bullets={c.bullets}
+            highlight={c.highlight}
+            ctaLabel={ru.hero.ctaWhatsApp}
+            ctaHref={WHATSAPP.url(waPrefill)}
+            ctaTarget="_blank"
+            ctaRel="noopener"
+          />
+        ))}
+      </div>
+      <p class="pricing-footnote">{ru.pricing.footnote}</p>
+    </div>
+  </section>
+
+  <!-- ПУНКТ 04 — why -->
+  <section class="section section-limestone" id="why">
+    <div class="container-page">
+      <header class="section-head">
+        <p class="eyebrow">{ru.why.kicker}</p>
+        <h2>{ru.why.title}</h2>
+        <p class="section-lead">{ru.why.lead}</p>
+      </header>
+      <div class="why-grid">
+        {ru.why.blocks.map((b) => (
+          <div class="why-block reveal">
+            <h3>{b.title}</h3>
+            <p>{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ПУНКТ 05 — process -->
+  <section class="section section-paper" id="process">
+    <div class="container-page">
+      <header class="section-head">
+        <p class="eyebrow">{ru.process.kicker}</p>
+        <h2>{ru.process.title}</h2>
+      </header>
+      <ProcessSteps steps={ru.process.steps} />
+    </div>
+  </section>
+
+  <!-- ПУНКТ 06 — FAQ -->
+  <section class="section section-limestone" id="faq">
+    <div class="container-page">
+      <header class="section-head">
+        <p class="eyebrow">{ru.faq.kicker}</p>
+        <h2>{ru.faq.title}</h2>
+      </header>
+      <FAQ items={ru.faq.items} />
+    </div>
+  </section>
+
+  <!-- ПУНКТ 07 — form -->
+  <section class="section section-paper" id="lead-form">
+    <div class="container-page">
+      <header class="section-head">
+        <p class="eyebrow">{ru.form.kicker}</p>
+        <h2>{ru.form.title}</h2>
+        <p class="section-lead">{ru.form.lead}</p>
+      </header>
+      <LeadForm
+        lang="ru"
+        labels={{
+          firstName: ru.form.fields.firstName,
+          lastName: ru.form.fields.lastName,
+          phone: ru.form.fields.phone,
+          email: ru.form.fields.email,
+          type: ru.form.fields.type,
+          message: ru.form.fields.message,
+          consent: ru.form.fields.consent,
+          whatsappOpt: ru.form.fields.whatsappOpt,
+        }}
+        types={ru.form.types}
+        submitLabel={ru.form.submit}
+        successMsg={ru.form.success}
+        errorMsg={ru.form.error}
+        altLabel={ru.form.altWa}
+        altWaPrefill={waPrefill}
+        formId="lead-ru"
+      />
+    </div>
+  </section>
+
+  <ContactStrip
+    title={ru.contact.title}
+    addressLine={ru.contact.addressLine}
+    hours={ru.contact.hours}
+    mapButton={ru.contact.mapButton}
+  />
+
+  <Footer
+    slot="footer"
+    tagline={ru.footer.tagline}
+    crossLinkLabel={ru.footer.crossLinkLabel}
+    crossLinkHref={ru.footer.crossLinkHref}
+    legal={ru.footer.legal}
+    languages={ru.footer.languages}
+    copyright={ru.footer.copyright}
+  />
+
+  <StickyMobileCTA
+    slot="sticky"
+    primary="whatsapp"
+    callLabel={ru.stickyMobile.call}
+    whatsappLabel={ru.stickyMobile.whatsapp}
+    formLabel={ru.stickyMobile.form}
+    waPrefill={waPrefill}
+    formAnchor="#lead-form"
+  />
+
+  <CookieBanner
+    slot="cookies"
+    text={ru.cookies.text}
+    accept={ru.cookies.accept}
+    reject={ru.cookies.reject}
+  />
+</BaseLayout>
+
+<style>
+  .section-head { margin-bottom: 2.4rem; max-width: 760px; }
+  .section-head h2 { margin: 0.6rem 0 0.8rem; }
+  .section-lead {
+    margin: 0;
+    color: #3a4a45;
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+
+  .dual-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 780px) { .dual-col { grid-template-columns: 1fr; } }
+  .col {
+    background: var(--color-paper);
+    border: 1px solid var(--color-mist);
+    border-radius: var(--radius-card);
+    padding: 1.8rem;
+  }
+  .col.yes { border-left: 3px solid var(--color-riviera); }
+  .col.no { border-left: 3px solid var(--color-seal); background: #FCF6F2; }
+  .col h3 {
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.1rem;
+  }
+  .col.yes h3 svg { color: var(--color-riviera); width: 20px; height: 20px; }
+  .col.no h3 svg { color: var(--color-seal); width: 20px; height: 20px; }
+  .col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .col li {
+    padding-left: 1.1rem;
+    position: relative;
+    font-size: 0.96rem;
+    color: var(--color-ink);
+    line-height: 1.5;
+  }
+  .col li::before {
+    content: "·";
+    position: absolute;
+    left: 0.2rem;
+    top: -2px;
+    font-size: 1.4rem;
+    color: var(--color-brass);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .services-grid h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+    color: var(--color-riviera);
+  }
+  .services-grid p { margin: 0; color: #3a4a45; font-size: 0.95rem; line-height: 1.55; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 820px;
+    margin-inline: auto;
+  }
+  @media (max-width: 720px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .pricing-footnote {
+    margin: 1.6rem auto 0;
+    max-width: 820px;
+    text-align: center;
+    font-size: 0.88rem;
+    color: #3a4a45;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem 2rem;
+  }
+  .why-block { padding: 1.2rem 0; border-top: 1px solid var(--color-mist); }
+  .why-block h3 { margin: 0 0 0.4rem; font-size: 1.1rem; color: var(--color-riviera); }
+  .why-block p { margin: 0; color: #3a4a45; font-size: 0.95rem; line-height: 1.55; }
+</style>

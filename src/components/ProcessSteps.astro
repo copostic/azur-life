@@ -1,0 +1,58 @@
+---
+interface Step {
+  n: string;
+  title: string;
+  body: string;
+}
+interface Props {
+  steps: readonly Step[];
+}
+const { steps } = Astro.props;
+---
+
+<ol class="process" role="list">
+  {steps.map((s) => (
+    <li class="process-step reveal">
+      <span class="step-n">{s.n}</span>
+      <h3>{s.title}</h3>
+      <p>{s.body}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .process {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .process-step {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--color-gold);
+  }
+  .step-n {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+  .process-step h3 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1.35rem;
+    color: var(--color-navy);
+  }
+  .process-step p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+</style>

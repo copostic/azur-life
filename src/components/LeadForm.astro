@@ -1,0 +1,292 @@
+---
+import { FORM_ENDPOINT, PHONE, WHATSAPP } from '~/lib/constants';
+
+type FormType = { v: string; label: string };
+
+interface Props {
+  lang: 'fr' | 'ru';
+  labels: {
+    firstName: string;
+    lastName: string;
+    phone: string;
+    email: string;
+    type: string;
+    message: string;
+    consent: string;
+    whatsappOpt?: string;
+  };
+  types: readonly FormType[];
+  submitLabel: string;
+  successMsg: string;
+  errorMsg: string;
+  altLabel: string;
+  altWaPrefill?: string;
+  formId: string;
+}
+
+const {
+  lang,
+  labels,
+  types,
+  submitLabel,
+  successMsg,
+  errorMsg,
+  altLabel,
+  altWaPrefill = '',
+  formId,
+} = Astro.props;
+
+const altCallLabel = lang === 'fr' ? PHONE.display : `+33 ${PHONE.display}`;
+---
+
+<form
+  id={formId}
+  class="lead-form reveal"
+  novalidate
+  data-endpoint={FORM_ENDPOINT}
+  data-success={successMsg}
+  data-error={errorMsg}
+>
+  <input type="text" name="company" class="field-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <input type="hidden" name="form_id" value={formId} />
+  <input type="hidden" name="page_path" value="" data-page-path />
+  <input type="hidden" name="intent" value="" data-intent-hidden />
+
+  <div class="field">
+    <label for={`${formId}-fn`}>{labels.firstName} <span class="req">*</span></label>
+    <input id={`${formId}-fn`} type="text" name="first_name" required autocomplete="given-name" />
+  </div>
+
+  <div class="field">
+    <label for={`${formId}-ln`}>{labels.lastName}</label>
+    <input id={`${formId}-ln`} type="text" name="last_name" autocomplete="family-name" />
+  </div>
+
+  <div class="field">
+    <label for={`${formId}-tel`}>{labels.phone} <span class="req">*</span></label>
+    <input id={`${formId}-tel`} type="tel" name="phone" required autocomplete="tel" inputmode="tel" />
+  </div>
+
+  <div class="field">
+    <label for={`${formId}-em`}>{labels.email} <span class="req">*</span></label>
+    <input id={`${formId}-em`} type="email" name="email" required autocomplete="email" inputmode="email" />
+  </div>
+
+  {labels.whatsappOpt && (
+    <label class="checkbox-row">
+      <input type="checkbox" name="whatsapp_opt" value="yes" />
+      <span>{labels.whatsappOpt}</span>
+    </label>
+  )}
+
+  <div class="field">
+    <label for={`${formId}-tp`}>{labels.type} <span class="req">*</span></label>
+    <select id={`${formId}-tp`} name="type" required>
+      {types.map((t) => (
+        <option value={t.v} disabled={t.v === ''} selected={t.v === ''}>
+          {t.label}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  <div class="field">
+    <label for={`${formId}-msg`}>{labels.message}</label>
+    <textarea id={`${formId}-msg`} name="message" rows="4"></textarea>
+  </div>
+
+  <label class="checkbox-row">
+    <input type="checkbox" name="consent" value="yes" required />
+    <span>{labels.consent} <span class="req">*</span></span>
+  </label>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">{submitLabel}</button>
+    <p class="alt-cta">
+      {altLabel}{' '}
+      {lang === 'ru' ? (
+        <a href={WHATSAPP.url(altWaPrefill)} target="_blank" rel="noopener">WhatsApp</a>
+      ) : (
+        <a href={`tel:${PHONE.raw}`}>{altCallLabel}</a>
+      )}
+    </p>
+  </div>
+
+  <div class="form-confidential">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </svg>
+    <span>Confidentialité absolue garantie</span>
+  </div>
+
+  <div class="form-feedback" aria-live="polite" data-feedback></div>
+</form>
+
+<script>
+  document.querySelectorAll('form.lead-form').forEach((formEl) => {
+    const form = formEl as HTMLFormElement;
+    const endpoint = form.dataset.endpoint || '';
+    const successMsg = form.dataset.success || 'Merci.';
+    const errorMsg = form.dataset.error || 'Erreur.';
+    const feedback = form.querySelector('[data-feedback]') as HTMLElement | null;
+    const pagePathInput = form.querySelector('[data-page-path]') as HTMLInputElement | null;
+    const intentHidden = form.querySelector('[data-intent-hidden]') as HTMLInputElement | null;
+
+    if (pagePathInput) pagePathInput.value = location.pathname + location.search;
+    if (intentHidden) {
+      const intent = new URLSearchParams(location.search).get('intent') || '';
+      intentHidden.value = intent;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      // Honeypot
+      const hp = form.querySelector('input[name="company"]') as HTMLInputElement | null;
+      if (hp && hp.value) return;
+
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.dataset.originalText = submitBtn.textContent || '';
+        submitBtn.textContent = '…';
+      }
+
+      const fd = new FormData(form);
+      const data: Record<string, FormDataEntryValue> = {};
+      fd.forEach((v, k) => { data[k] = v; });
+
+      const trackPayload = {
+        form_id: String(data.form_id || ''),
+        email: String(data.email || ''),
+        phone: String(data.phone || ''),
+        first_name: String(data.first_name || ''),
+        last_name: String(data.last_name || ''),
+        value: 0,
+      };
+
+      const fail = () => {
+        if (feedback) {
+          feedback.textContent = errorMsg;
+          feedback.dataset.state = 'error';
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitBtn.dataset.originalText || 'Envoyer';
+        }
+      };
+
+      if (!endpoint || endpoint.includes('XXXXXXXX')) {
+        // Dev / unconfigured backend — show success in UI, still push lead event
+        // so QA can verify tracking. Replace endpoint in .env to enable real POST.
+        console.warn('[LeadForm] PUBLIC_FORM_ENDPOINT not configured — simulating success.');
+        (window as any).trackLead?.(trackPayload);
+        if (feedback) { feedback.textContent = successMsg; feedback.dataset.state = 'success'; }
+        form.reset();
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.originalText || 'OK'; }
+        return;
+      }
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: fd,
+        });
+        if (!res.ok) throw new Error('http_' + res.status);
+        (window as any).trackLead?.(trackPayload);
+        if (feedback) { feedback.textContent = successMsg; feedback.dataset.state = 'success'; }
+        form.reset();
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.originalText || 'OK'; }
+      } catch (_err) {
+        fail();
+      }
+    });
+  });
+</script>
+
+<style>
+  .lead-form {
+    background: white;
+    border: 1px solid var(--color-outline);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 760px;
+    margin-inline: auto;
+    position: relative;
+  }
+  .lead-form::before,
+  .lead-form::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--color-gold);
+  }
+  .lead-form::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+  }
+  .lead-form::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+  }
+  .form-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .form-actions .btn { padding-inline: 2.5rem; }
+  .alt-cta {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--color-muted);
+  }
+  .alt-cta a {
+    font-weight: 500;
+    color: var(--color-navy);
+  }
+  .form-confidential {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--color-muted);
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-outline);
+  }
+  .form-confidential svg {
+    color: var(--color-gold);
+  }
+  .form-feedback {
+    font-size: 0.95rem;
+    font-weight: 300;
+    padding: 1rem 1.5rem;
+    display: none;
+  }
+  .form-feedback[data-state="success"] {
+    display: block;
+    background: #E7F0E4;
+    color: var(--color-success);
+    border-left: 3px solid var(--color-success);
+  }
+  .form-feedback[data-state="error"] {
+    display: block;
+    background: #FBEAE7;
+    color: var(--color-error);
+    border-left: 3px solid var(--color-error);
+  }
+  @media (max-width: 640px) {
+    .lead-form { padding: 2rem; }
+  }
+</style>

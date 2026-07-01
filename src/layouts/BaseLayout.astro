@@ -1,0 +1,168 @@
+---
+import '~/styles/global.css';
+import { Font } from 'astro:assets';
+import { SITE, TRACKING, ROUTES } from '~/lib/constants';
+import { trackingScript } from '~/lib/tracking';
+
+interface Props {
+  lang: 'fr' | 'ru';
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage?: string;
+  jsonLd?: object[];
+}
+
+const {
+  lang,
+  title,
+  description,
+  canonical,
+  ogImage,
+  jsonLd = [],
+} = Astro.props;
+
+const ogImgUrl = (ogImage || '/og/default.jpg').startsWith('http')
+  ? ogImage
+  : SITE.url + (ogImage || '/og/default.jpg');
+
+const hreflangs = [
+  { lang: 'fr', href: SITE.url + ROUTES.fr },
+  { lang: 'ru', href: SITE.url + ROUTES.ru },
+  { lang: 'x-default', href: SITE.url + ROUTES.fr },
+];
+
+const gtmId = TRACKING.gtmId;
+const ga4Id = TRACKING.ga4Id;
+const adsId = TRACKING.adsId;
+
+// Consent Mode v2 default-DENIED snippet. Must load BEFORE GTM/gtag.
+const consentInit = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  analytics_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  functionality_storage: 'granted',
+  security_storage: 'granted',
+  wait_for_update: 500,
+});
+gtag('set', 'ads_data_redaction', true);
+gtag('set', 'url_passthrough', true);
+gtag('js', new Date());
+${ga4Id ? `gtag('config', '${ga4Id}', { anonymize_ip: true });` : ''}
+${adsId ? `gtag('config', '${adsId}');` : ''}
+`;
+
+const gtmScript = gtmId
+  ? `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`
+  : '';
+---
+
+<!doctype html>
+<html lang={lang} dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1B4B5A" />
+    <meta name="format-detection" content="telephone=yes" />
+
+    <!-- Consent Mode v2 (must be FIRST) -->
+    <script set:html={consentInit} is:inline></script>
+
+    <!-- GTM container (gated by consent state via Consent Mode) -->
+    {gtmId && <script set:html={gtmScript} is:inline></script>}
+    {!gtmId && ga4Id && (
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} is:inline></script>
+    )}
+
+    <!-- Fonts (self-hosted via Astro Fonts API) -->
+    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-body" preload />
+    <Font cssVariable="--font-mono" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    {hreflangs.map((h) => (
+      <link rel="alternate" hreflang={h.lang} href={h.href} />
+    ))}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'ru_RU'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:image" content={ogImgUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImgUrl} />
+
+    <!-- JSON-LD -->
+    {jsonLd.map((node) => (
+      <script type="application/ld+json" set:html={JSON.stringify(node)} is:inline></script>
+    ))}
+
+    <!-- Tracking helpers (dataLayer push helpers) -->
+    <script set:html={trackingScript} is:inline></script>
+  </head>
+  <body>
+    <!-- GTM noscript -->
+    {gtmId && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+          height="0" width="0"
+          style="display:none;visibility:hidden"
+          title="gtm"
+        ></iframe>
+      </noscript>
+    )}
+
+    <a href="#main" class="skip-link">Aller au contenu principal</a>
+
+    <slot name="header" />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <slot name="footer" />
+
+    <slot name="sticky" />
+    <slot name="cookies" />
+
+    <!-- Reveal-on-scroll (passive IntersectionObserver) -->
+    <script>
+      (function () {
+        if (typeof IntersectionObserver === 'undefined') {
+          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-in'));
+          return;
+        }
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>

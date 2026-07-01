@@ -1,0 +1,99 @@
+---
+interface Props {
+  ariaLabel?: string;
+}
+const { ariaLabel = "Plan d'expertise — villa Côte d'Azur" } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 520 380"
+  role="img"
+  aria-label={ariaLabel}
+  class="blueprint"
+>
+  <!-- Background grid -->
+  <defs>
+    <pattern id="bp-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.18" />
+    </pattern>
+  </defs>
+  <rect width="520" height="380" fill="url(#bp-grid)" />
+
+  <!-- Sea wave line -->
+  <path
+    d="M 0 350 Q 60 340 120 350 T 240 350 T 360 350 T 520 350"
+    fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.55"
+  />
+  <path
+    d="M 0 365 Q 60 358 120 365 T 240 365 T 360 365 T 520 365"
+    fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.35"
+  />
+
+  <!-- Villa massing (elevation) -->
+  <g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <!-- main body -->
+    <rect x="120" y="180" width="280" height="140" />
+    <!-- roof -->
+    <path d="M 100 180 L 260 90 L 420 180 Z" />
+    <!-- chimney -->
+    <path d="M 340 130 L 340 100 L 360 100 L 360 144" />
+    <!-- door -->
+    <rect x="240" y="240" width="40" height="80" />
+    <path d="M 260 240 L 260 320" stroke-width="0.8" opacity="0.6" />
+    <!-- windows -->
+    <rect x="150" y="210" width="50" height="50" />
+    <line x1="175" y1="210" x2="175" y2="260" stroke-width="0.8" />
+    <line x1="150" y1="235" x2="200" y2="235" stroke-width="0.8" />
+    <rect x="320" y="210" width="50" height="50" />
+    <line x1="345" y1="210" x2="345" y2="260" stroke-width="0.8" />
+    <line x1="320" y1="235" x2="370" y2="235" stroke-width="0.8" />
+    <!-- terrace line -->
+    <line x1="60" y1="320" x2="460" y2="320" />
+    <!-- terrace railings -->
+    <g stroke-width="0.9" opacity="0.8">
+      <line x1="80" y1="320" x2="80" y2="330" />
+      <line x1="100" y1="320" x2="100" y2="330" />
+      <line x1="430" y1="320" x2="430" y2="330" />
+      <line x1="450" y1="320" x2="450" y2="330" />
+    </g>
+  </g>
+
+  <!-- Dimension ticks top -->
+  <g stroke="currentColor" stroke-width="1" opacity="0.7">
+    <line x1="120" y1="60" x2="400" y2="60" />
+    <line x1="120" y1="55" x2="120" y2="65" />
+    <line x1="400" y1="55" x2="400" y2="65" />
+    <line x1="260" y1="55" x2="260" y2="65" />
+  </g>
+  <text x="190" y="52" font-family="var(--font-mono)" font-size="9" fill="currentColor" letter-spacing="1.5">14.20 M</text>
+  <text x="328" y="52" font-family="var(--font-mono)" font-size="9" fill="currentColor" letter-spacing="1.5">14.20 M</text>
+
+  <!-- Vertical dimension left -->
+  <g stroke="currentColor" stroke-width="1" opacity="0.7">
+    <line x1="60" y1="90" x2="60" y2="320" />
+    <line x1="55" y1="90" x2="65" y2="90" />
+    <line x1="55" y1="320" x2="65" y2="320" />
+  </g>
+  <text x="36" y="210" font-family="var(--font-mono)" font-size="9" fill="currentColor" letter-spacing="1.5" transform="rotate(-90 40 210)">11.50 M</text>
+
+  <!-- Compass rose -->
+  <g transform="translate(465 60)" stroke="currentColor" fill="none" stroke-width="1">
+    <circle r="18" />
+    <path d="M 0 -18 L 4 0 L 0 18 L -4 0 Z" fill="currentColor" opacity="0.9" />
+    <text x="0" y="-22" text-anchor="middle" font-family="var(--font-mono)" font-size="8" fill="currentColor">N</text>
+  </g>
+
+  <!-- Reference code -->
+  <text x="120" y="350" font-family="var(--font-mono)" font-size="9" fill="currentColor" letter-spacing="2">RÉF · AL-EXP-2026</text>
+</svg>
+
+<style>
+  .blueprint {
+    width: 100%;
+    height: auto;
+    color: var(--color-riviera);
+    max-width: 560px;
+    display: block;
+  }
+</style>

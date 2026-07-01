@@ -1,0 +1,83 @@
+---
+import '~/styles/global.css';
+import { Font } from 'astro:assets';
+import { SITE, ROUTES } from '~/lib/constants';
+
+const title = 'Azur Life — Cabinet d’expertise & Property Management · Côte d’Azur';
+const description =
+  'Cabinet d’expertise immobilière indépendant et Property Management premium entre Nice et Monaco. Pages d’atterrissage français & русский.';
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1B4B5A" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={SITE.url + '/'} />
+    <link rel="alternate" hreflang="fr" href={SITE.url + ROUTES.fr} />
+    <link rel="alternate" hreflang="ru" href={SITE.url + ROUTES.ru} />
+    <link rel="alternate" hreflang="x-default" href={SITE.url + ROUTES.fr} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-body" preload />
+    <meta name="robots" content="noindex, follow" />
+  </head>
+  <body>
+    <main class="splash">
+      <div class="splash-card">
+        <div class="brand-mark" aria-hidden="true">A</div>
+        <h1>Azur Life</h1>
+        <p class="tagline">Cabinet d’expertise immobilière · Property Management · Beaulieu-sur-Mer</p>
+        <hr class="hairline" />
+        <div class="splash-cta">
+          <a href={ROUTES.fr} class="btn btn-secondary">Site en français</a>
+          <a href={ROUTES.ru} class="btn btn-secondary">Русская версия</a>
+        </div>
+        <p class="note">Pages d’atterrissage acquisition payante. Site principal : <a href="https://azur-life.com">azur-life.com</a>.</p>
+      </div>
+    </main>
+
+    <style>
+      body { background: var(--color-limestone); min-height: 100vh; display: grid; place-items: center; }
+      .splash {
+        padding: 2rem;
+        width: 100%;
+        max-width: 540px;
+      }
+      .splash-card {
+        background: var(--color-paper);
+        border: 1px solid var(--color-mist);
+        border-radius: var(--radius-card);
+        padding: 2.5rem 2rem;
+        text-align: center;
+        box-shadow: 0 20px 50px -24px rgba(20, 36, 31, 0.25);
+      }
+      .brand-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        background: var(--color-riviera);
+        color: var(--color-paper);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin: 0 auto 1.2rem;
+      }
+      h1 { margin: 0 0 0.4rem; }
+      .tagline { margin: 0 0 1.6rem; color: #3a4a45; font-size: 0.95rem; }
+      .splash-cta {
+        display: flex;
+        gap: 0.6rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 1.4rem 0;
+      }
+      .note { font-size: 0.8rem; color: #3a4a45; margin: 1rem 0 0; }
+    </style>
+  </body>
+</html>

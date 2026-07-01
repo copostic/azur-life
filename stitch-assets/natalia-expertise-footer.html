@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Natalia Expertise Immobilière</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=PT+Serif:wght@400;700&amp;family=Source+Serif+4:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f6f3f4",
+                        "on-tertiary-fixed": "#201c00",
+                        "on-secondary-fixed": "#002020",
+                        "on-primary-fixed": "#410004",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#94d1d1",
+                        "outline": "#8c716e",
+                        "tertiary-fixed": "#f5e479",
+                        "on-surface-variant": "#58413f",
+                        "primary-container": "#a82d2d",
+                        "secondary-fixed": "#b0eeed",
+                        "outline-variant": "#e0bfbc",
+                        "primary-fixed": "#ffdad7",
+                        "surface": "#fcf8f9",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dcd9da",
+                        "primary": "#871319",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#8c171c",
+                        "tertiary": "#6a5f00",
+                        "on-primary-container": "#ffc5c0",
+                        "on-secondary-container": "#306e6d",
+                        "secondary": "#296767",
+                        "on-tertiary-container": "#484000",
+                        "surface-variant": "#e5e2e3",
+                        "surface-container-highest": "#e5e2e3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#d8c860",
+                        "on-secondary-fixed-variant": "#044f4f",
+                        "on-background": "#1b1b1c",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "inverse-on-surface": "#f3f0f1",
+                        "on-surface": "#1b1b1c",
+                        "surface-tint": "#ad3130",
+                        "secondary-container": "#b0eeed",
+                        "background": "#fcf8f9",
+                        "tertiary-container": "#bbac48",
+                        "surface-bright": "#fcf8f9",
+                        "inverse-surface": "#303031",
+                        "surface-container-high": "#eae7e8",
+                        "surface-container": "#f0edee",
+                        "inverse-primary": "#ffb3ae",
+                        "on-tertiary-fixed-variant": "#504700",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["\"Source Serif 4\""],
+                        "display-lg": ["\"Source Serif 4\""],
+                        "body-lg": ["IBM Plex Sans"],
+                        "body-md": ["IBM Plex Sans"],
+                        "utility-sm": ["IBM Plex Mono"],
+                        "headline-md": ["\"Source Serif 4\""],
+                        "label-caps": ["IBM Plex Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "utility-sm": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .font-pt-serif { font-family: 'PT Serif', serif; }
+        .bg-cream-paper { background-color: #F9F7F2; }
+    </style>
+</head>
+<body class="bg-cream-paper text-on-surface font-body-md antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-surface border-b border-outline-variant flat no shadows">
+<div class="flex justify-between items-center px-lg py-base max-w-container-max mx-auto">
+<a class="font-display-lg text-display-lg text-primary tracking-tight" href="#">Natalia Expertise</a>
+<div class="hidden md:flex items-center gap-md">
+<a class="font-label-caps text-label-caps text-primary font-bold border-b-2 border-primary pb-1" href="#">Expertise</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant opacity-80 hover:text-primary transition-colors duration-300" href="#">Services</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant opacity-80 hover:text-primary transition-colors duration-300" href="#">Regions</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant opacity-80 hover:text-primary transition-colors duration-300" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="hidden lg:inline-flex items-center justify-center px-6 py-3 border border-on-surface text-on-surface hover:bg-surface-variant transition-colors rounded-none font-label-caps text-label-caps">
+                    WhatsApp
+                </button>
+<button class="inline-flex items-center justify-center px-6 py-3 bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors rounded-none font-label-caps text-label-caps">
+                    Appelez-nous
+                </button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-xl pb-xl px-lg lg:px-xl overflow-hidden">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Left Column: Content -->
+<div class="lg:col-span-7 flex flex-col justify-center">
+<div class="mb-lg">
+<span class="inline-block px-3 py-1 border border-on-surface text-on-surface font-utility-sm text-utility-sm mb-6 bg-surface">
+                            Beaulieu-sur-Mer · Alpes-Maritimes · 06
+                        </span>
+<h1 class="font-pt-serif text-[40px] leading-[48px] lg:text-[56px] lg:leading-[64px] font-bold text-secondary mb-6 tracking-tight">
+                            Expertise Immobilière Indépendante : Votre Patrimoine Valorisé avec Rigueur.
+                        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl border-l-2 border-outline-variant pl-4">
+                            Rapports officiels certifiés pour successions, déclarations IFI, divorces et procédures judiciaires sur la Côte d'Azur.
+                        </p>
+<ul class="space-y-4 mb-xl max-w-2xl">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px] mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Opposabilité juridique des rapports</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px] mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Absence totale de conflit d'intérêt (pas d'agence)</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px] mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">6 langues parlées nativement</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px] mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Remise des rapports sous 48h (options urgentes)</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px] mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Couverture : Nice, Monaco, Menton, Var</span>
+</li>
+</ul>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors rounded-none font-label-caps text-label-caps tracking-widest">
+<span class="material-symbols-outlined mr-2 text-[20px]">call</span>
+                                Appeler Natalia
+                            </button>
+<button class="inline-flex items-center justify-center px-8 py-4 border-2 border-on-surface text-on-surface hover:bg-surface-variant transition-colors rounded-none font-label-caps text-label-caps tracking-widest bg-transparent">
+<span class="material-symbols-outlined mr-2 text-[20px]">chat</span>
+                                WhatsApp
+                            </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Sticky Form -->
+<div class="lg:col-span-5 relative">
+<!-- Subtle background seal image -->
+<div class="bg-contain bg-no-repeat" data-alt="A subtle, low-opacity watermark of an elegant circular notarial seal, styled in brass and deep teal. The seal features the words 'Azur Life' and 'Expertise Immobilière' in formal typography. It rests seamlessly on a cream-colored, textured paper background, adding an authoritative, official document aesthetic to the real estate firm's interface." style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLuFtmHAP2R9uCMDhnBcoJkKjq76KzwQITRj4cCQAzKd41SC1HmCKHfhdVhaDYKY1wEWvle_UZitEQwCiXa6bCU9jTWMJnEF-T_WD5IXeEZo-mbwz_ZzKRI9alPcgf3TlgpJQEqwaUF043RPFuSoxAoKXxhDds-8BliINWuUB8HwntrOCwiDPs_PbuwbkeWuKHmTWyP0O_2-6Q19VwOAig340yyVsVtJOJ8lfr1yGq_1V_8VPMcDXhJA')"></div>
+<div class="sticky top-32 bg-surface border border-outline p-8 md:p-10 relative z-10 shadow-sm">
+<div class="border-b border-outline pb-4 mb-8">
+<h2 class="font-label-caps text-label-caps text-on-surface tracking-widest uppercase">Demande de devis gratuit</h2>
+</div>
+<form class="space-y-6">
+<div class="relative">
+<label class="font-utility-sm text-utility-sm text-on-surface-variant block mb-1" for="name">Nom Complet</label>
+<input class="w-full bg-transparent border-0 border-b border-on-surface p-0 pb-2 focus:ring-0 focus:border-primary text-body-md text-on-surface placeholder:text-outline-variant" id="name" name="name" placeholder="Votre nom" type="text"/>
+</div>
+<div class="relative">
+<label class="font-utility-sm text-utility-sm text-on-surface-variant block mb-1" for="phone">Téléphone / WhatsApp</label>
+<input class="w-full bg-transparent border-0 border-b border-on-surface p-0 pb-2 focus:ring-0 focus:border-primary text-body-md text-on-surface placeholder:text-outline-variant" id="phone" name="phone" placeholder="+33 6 00 00 00 00" type="tel"/>
+</div>
+<div class="relative">
+<label class="font-utility-sm text-utility-sm text-on-surface-variant block mb-1" for="type">Type d'expertise</label>
+<select class="w-full bg-transparent border-0 border-b border-on-surface p-0 pb-2 focus:ring-0 focus:border-primary text-body-md text-on-surface cursor-pointer" id="type" name="type">
+<option disabled="" selected="" value="">Sélectionner...</option>
+<option value="succession">Succession</option>
+<option value="ifi">Déclaration IFI</option>
+<option value="divorce">Divorce</option>
+<option value="judiciaire">Procédure judiciaire</option>
+<option value="vente">Vente / Achat</option>
+</select>
+</div>
+<button class="w-full inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors rounded-none font-label-caps text-label-caps tracking-widest mt-8" type="submit">
+                                Demander mon devis
+                            </button>
+</form>
+<div class="mt-6 pt-6 border-t border-outline-variant flex flex-col items-center text-center">
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                                Natalia vous rappelle personnellement sous 24 heures.
+                            </p>
+<div class="flex gap-4 justify-center mb-6">
+<a class="inline-flex items-center gap-2 text-primary hover:underline font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[18px]">phone_in_talk</span>
+                                    APPELER
+                                </a>
+<span class="text-outline-variant">|</span>
+<a class="inline-flex items-center gap-2 text-primary hover:underline font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+                                    WHATSAPP
+                                </a>
+</div>
+<p class="font-utility-sm text-utility-sm text-outline flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                                Confidentialité absolue garantie.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section><section class="bg-surface-container-low border-t border-b border-outline-variant py-8">
+<div class="max-w-container-max mx-auto px-lg">
+<div class="grid grid-cols-2 md:grid-cols-5 items-center">
+<div class="flex flex-col items-center text-center px-4 border-r border-outline-variant last:border-r-0">
+<span class="font-pt-serif text-[32px] font-bold text-primary mb-1">5.0 ★</span>
+<span class="font-utility-sm text-label-caps text-on-surface-variant uppercase tracking-widest">Google Reviews (45+)</span>
+</div>
+<div class="flex flex-col items-center text-center px-4 border-r border-outline-variant last:border-r-0">
+<span class="font-pt-serif text-[32px] font-bold text-primary mb-1">10+</span>
+<span class="font-utility-sm text-label-caps text-on-surface-variant uppercase tracking-widest">Years on the Riviera</span>
+</div>
+<div class="flex flex-col items-center text-center px-4 border-r border-outline-variant last:border-r-0">
+<span class="font-pt-serif text-[32px] font-bold text-primary mb-1">400+</span>
+<span class="font-utility-sm text-label-caps text-on-surface-variant uppercase tracking-widest">Official Reports</span>
+</div>
+<div class="flex flex-col items-center text-center px-4 border-r border-outline-variant last:border-r-0">
+<span class="font-pt-serif text-[32px] font-bold text-primary mb-1">6</span>
+<span class="font-utility-sm text-label-caps text-on-surface-variant uppercase tracking-widest">Languages Spoken</span>
+</div>
+<div class="flex flex-col items-center text-center px-4 border-r border-outline-variant last:border-r-0">
+<span class="font-pt-serif text-[32px] font-bold text-primary mb-1">48h</span>
+<span class="font-utility-sm text-label-caps text-on-surface-variant uppercase tracking-widest">Standard Delivery</span>
+</div>
+</div>
+</div>
+</section><section class="bg-surface border-b border-outline-variant py-xl px-lg">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+<!-- Column 1 -->
+<div class="flex flex-col p-8 border-outline-variant lg:border-r">
+<span class="font-utility-sm text-label-caps text-outline-variant uppercase tracking-widest mb-4">COMMUNICATION</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">6 langues</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Français, Anglais, Russe et plus, pour une communication directe sans interprète.</p>
+</div>
+<!-- Column 2 -->
+<div class="flex flex-col p-8 border-outline-variant md:border-l lg:border-l-0 lg:border-r">
+<span class="font-utility-sm text-label-caps text-outline-variant uppercase tracking-widest mb-4">FORMATION</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">Master II Droit</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Formation juridique de haut niveau reconnue en droit immobilier.</p>
+</div>
+<!-- Column 3 -->
+<div class="flex flex-col p-8 border-outline-variant border-t md:border-t-0 lg:border-r">
+<span class="font-utility-sm text-label-caps text-outline-variant uppercase tracking-widest mb-4">INDÉPENDANCE</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">Aucun mandat</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Pas d'activité de vente, zéro conflit d'intérêt, tiers de confiance absolu.</p>
+</div>
+<!-- Column 4 -->
+<div class="flex flex-col p-8 border-outline-variant border-t md:border-t-0 md:border-l lg:border-l-0">
+<span class="font-utility-sm text-label-caps text-outline-variant uppercase tracking-widest mb-4">RÉACTIVITÉ</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">48h &amp; urgences</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Disponible pour les urgences judiciaires ou notariales, livraison express sur demande.</p>
+</div>
+</div>
+</div>
+</section><section class="bg-surface-container py-xl px-lg border-b border-outline-variant">
+<div class="max-w-container-max mx-auto">
+<div class="bg-surface border border-primary p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+<div class="flex-1">
+<span class="font-utility-sm text-label-caps text-primary uppercase tracking-widest mb-4 block">SAISONNIER : JANVIER À JUIN</span>
+<h2 class="font-pt-serif text-display-lg-mobile lg:text-headline-md font-bold text-secondary mb-4">
+                    Expertise IFI Côte d'Azur — Déclaration 2025–2026
+                </h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">
+                    La firme délivre des rapports d'expertise certifiés pour vos déclarations IFI, avec déductions fiscalement admises et une méthodologie conforme à la DGFiP. Livraison express disponible avant la date limite de déclaration.
+                </p>
+</div>
+<div class="flex-shrink-0">
+<button class="inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors rounded-none font-label-caps text-label-caps tracking-widest">
+                    Demander mon rapport IFI
+                </button>
+</div>
+</div>
+</div>
+</section><section class="bg-surface py-xl px-lg border-b border-outline-variant">
+<div class="max-w-container-max mx-auto">
+<div class="mb-lg">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-4 block">Nos Compétences</span>
+<h2 class="font-pt-serif text-display-lg-mobile lg:text-headline-md font-bold text-secondary">Domaines d'Expertise Juridique</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Card 01 -->
+<div class="flex flex-col p-8 border border-outline-variant bg-surface-container-lowest">
+<span class="font-utility-sm text-utility-sm text-outline-variant mb-4">01</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">Succession &amp; Donation</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6 flex-1">
+          Conformément à l'article 815 du Code civil, nous intervenons pour la gestion de l'indivision. Nos rapports respectent les standards de valorisation notariaux et permettent une datation rétroactive précise pour le règlement des successions.
+        </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Notaire</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Indivision</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Code Civil</span>
+</div>
+</div>
+<!-- Card 02 -->
+<div class="flex flex-col p-8 border border-outline-variant bg-surface-container-lowest">
+<span class="font-utility-sm text-utility-sm text-outline-variant mb-4">02</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">Divorce &amp; Prestation</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6 flex-1">
+          Application de l'article 271 du Code civil. Nous garantissons l'importance des rapports d'expertise contradictoires dans les procédures matrimoniales et la liquidation de régime pour une équité parfaite entre les parties.
+        </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Droit de la Famille</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Contradictoire</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Liquidatif</span>
+</div>
+</div>
+<!-- Card 03 -->
+<div class="flex flex-col p-8 border border-outline-variant bg-surface-container-lowest">
+<span class="font-utility-sm text-utility-sm text-outline-variant mb-4">03</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">IFI &amp; Optimisation</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6 flex-1">
+          Détail des abattements fiscalement admis (10-20% pour occupation, 20-30% pour indivision). Conformité totale avec la méthodologie DGFiP, incluant les spécificités pour les résidents et non-résidents fiscaux.
+        </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Fiscalité</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">DGFiP</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Abattements</span>
+</div>
+</div>
+<!-- Card 04 -->
+<div class="flex flex-col p-8 border border-outline-variant bg-surface-container-lowest">
+<span class="font-utility-sm text-utility-sm text-outline-variant mb-4">04</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">Expertise Judiciaire</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6 flex-1">
+          Couverture des dossiers d'expropriation, de vice caché et de contentieux. Représentation technique devant le Tribunal de Nice et la Cour d'appel d'Aix-en-Provence pour sécuriser vos intérêts juridiques.
+        </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Tribunal</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Contentieux</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Aix-en-Provence</span>
+</div>
+</div>
+<!-- Card 05 -->
+<div class="flex flex-col p-8 border border-outline-variant bg-surface-container-lowest">
+<span class="font-utility-sm text-utility-sm text-outline-variant mb-4">05</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">Crédit &amp; Garantie</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6 flex-1">
+          Élaboration de rapports conformes aux exigences bancaires pour le refinancement. Expertise dédiée à la valorisation de propriétés de prestige ou atypiques sur la Riviera française.
+        </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Banque</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Refinancement</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Prestige</span>
+</div>
+</div>
+<!-- Card 06 -->
+<div class="flex flex-col p-8 border border-outline-variant bg-surface-container-lowest">
+<span class="font-utility-sm text-utility-sm text-outline-variant mb-4">06</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary mb-4">Cession de parts &amp; SCI</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6 flex-1">
+          Évaluation de SCI familiales avec application de décotes de minorité justifiées. Analyse rigoureuse des articles de statuts pour une valorisation fidèle des parts sociales.
+        </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">SCI</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Parts Sociales</span>
+<span class="font-utility-sm text-[12px] px-2 py-1 bg-surface-container text-on-surface-variant">Décote</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Market Data Section -->
+<section class="bg-surface py-xl px-lg border-b border-outline-variant">
+<div class="max-w-container-max mx-auto">
+<div class="mb-lg">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-4 block">Données de Marché</span>
+<h2 class="font-pt-serif text-display-lg-mobile lg:text-headline-md font-bold text-secondary mb-6">Analyse Micro-Marché Nice 2026</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl border-l-2 border-outline-variant pl-4">
+        Les moyennes de quartier sont souvent trompeuses. Chaque rapport d'expertise Natalia repose sur une analyse granulaire du micro-marché, isolant les caractéristiques intrinsèques de votre bien.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="p-8 border border-outline-variant bg-surface-container-lowest">
+<div class="font-pt-serif text-[32px] font-bold text-primary mb-2">10 850 €/m²</div>
+<div class="font-label-caps text-label-caps text-on-surface font-bold mb-4">Prix Moyen Appartement Nice</div>
+<div class="font-utility-sm text-utility-sm text-outline-variant">Données prévisionnelles 2026, secteurs résidentiels premium.</div>
+</div>
+<div class="p-8 border border-outline-variant bg-surface-container-lowest">
+<div class="font-pt-serif text-[32px] font-bold text-primary mb-2">15 400 €/m²</div>
+<div class="font-label-caps text-label-caps text-on-surface font-bold mb-4">Prix Moyen Maison &amp; Villa</div>
+<div class="font-utility-sm text-utility-sm text-outline-variant">Forte disparité selon l'exposition et la vue mer.</div>
+</div>
+<div class="p-8 border border-outline-variant bg-surface-container-lowest">
+<div class="font-pt-serif text-[32px] font-bold text-primary mb-2">1 à 4x</div>
+<div class="font-label-caps text-label-caps text-on-surface font-bold mb-4">Amplitude de Prix</div>
+<div class="font-utility-sm text-utility-sm text-outline-variant">Ratio entre les quartiers standard et les enclaves de prestige (Cimiez, Mont Boron).</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Methodology Section -->
+<section class="bg-cream-paper py-xl px-lg border-b border-outline-variant">
+<div class="max-w-container-max mx-auto">
+<div class="mb-lg">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-4 block">Rigueur Technique</span>
+<h2 class="font-pt-serif text-display-lg-mobile lg:text-headline-md font-bold text-secondary">Méthodologies d'Appraisal</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-0 border border-outline-variant">
+<div class="p-8 border-outline-variant lg:border-r">
+<h3 class="font-utility-sm text-label-caps text-secondary font-bold mb-4">(I) Méthode par Comparaison</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+          Sélection d'un panel de 5 à 12 transactions réelles issues des bases DVF et notariales. Ajustements techniques : étage, exposition, état, et prestations.
+        </p>
+</div>
+<div class="p-8 border-outline-variant border-t lg:border-t-0 lg:border-r">
+<h3 class="font-utility-sm text-label-caps text-secondary font-bold mb-4">(II) Méthode par le Revenu</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+          Capitalisation des loyers pour les actifs de rendement. Utilisation des taux de rendement de marché par segment de quartier et typologie d'actif.
+        </p>
+</div>
+<div class="p-8 border-outline-variant border-t lg:border-t-0">
+<h3 class="font-utility-sm text-label-caps text-secondary font-bold mb-4">(III) Valeur de Remplacement</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+          Pour les biens atypiques (Villas Belle Époque, immeubles entiers). Calcul basé sur le coût de reconstruction à neuf diminué de la vétusté.
+        </p>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant">
+<p class="font-utility-sm text-utility-sm text-outline italic">
+        Rapports rédigés en conformité avec la Charte de l'Expertise en Évaluation Immobilière (CEEI) et les normes européennes TEGoVA (EVS).
+      </p>
+</div>
+</div>
+</section><section class="bg-surface py-xl px-lg border-b border-outline-variant">
+<div class="max-w-container-max mx-auto">
+<div class="mb-lg">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-4 block">Études de Cas</span>
+<h2 class="font-pt-serif text-display-lg-mobile lg:text-headline-md font-bold text-secondary">Expertise en Action</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Case Study 1 -->
+<div class="flex flex-col p-8 border border-outline-variant bg-surface-container-lowest shadow-sm">
+<div class="mb-6">
+<span class="font-utility-sm text-utility-sm text-outline-variant uppercase tracking-widest block mb-2">SUCCESSION — INDIVISION</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary">Villa Belle Époque à Cimiez, Nice</h3>
+</div>
+<div class="space-y-6 flex-1">
+<div>
+<h4 class="font-label-caps text-[12px] text-on-surface-variant uppercase mb-2">Contexte</h4>
+<p class="font-pt-serif text-body-md text-on-surface">Trois héritiers en désaccord. Les estimations d'agences variaient de manière excessive, bloquant la succession.</p>
+</div>
+<div>
+<h4 class="font-label-caps text-[12px] text-on-surface-variant uppercase mb-2">Intervention</h4>
+<p class="font-pt-serif text-body-md text-on-surface">Analyse croisée par méthode comparative et coût de remplacement (méthode de la valeur vénale).</p>
+</div>
+<div class="pt-4 border-t border-outline-variant">
+<h4 class="font-label-caps text-[12px] text-primary uppercase mb-2">Résultat</h4>
+<p class="font-pt-serif text-[24px] font-bold text-primary leading-tight">Écart réduit de 65% par rapport aux estimations initiales. Accord trouvé en 4 semaines sans liquidation judiciaire.</p>
+</div>
+</div>
+</div>
+<!-- Case Study 2 -->
+<div class="flex flex-col p-8 border border-outline-variant bg-surface-container-lowest shadow-sm">
+<div class="mb-6">
+<span class="font-utility-sm text-utility-sm text-outline-variant uppercase tracking-widest block mb-2">CONTRÔLE FISCAL — IFI</span>
+<h3 class="font-pt-serif text-headline-md font-bold text-secondary">Appartement de réception (165 m²), Carré d'Or</h3>
+</div>
+<div class="space-y-6 flex-1">
+<div>
+<h4 class="font-label-caps text-[12px] text-on-surface-variant uppercase mb-2">Contexte</h4>
+<p class="font-pt-serif text-body-md text-on-surface">Propriétaire non-résident faisant face à un audit de la DGFiP sur sa déclaration IFI.</p>
+</div>
+<div>
+<h4 class="font-label-caps text-[12px] text-on-surface-variant uppercase mb-2">Intervention</h4>
+<p class="font-pt-serif text-body-md text-on-surface">Panel de 11 transactions comparables avec méthodologie conforme aux exigences de l'administration fiscale.</p>
+</div>
+<div class="pt-4 border-t border-outline-variant">
+<h4 class="font-label-caps text-[12px] text-primary uppercase mb-2">Résultat</h4>
+<p class="font-pt-serif text-[24px] font-bold text-primary leading-tight">Réduction de 18% de la base imposable. Dossier clôturé par la DGFiP sans redressement.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section class="bg-surface py-xl px-lg border-b border-outline-variant">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+<div class="flex flex-col">
+<h2 class="font-pt-serif text-display-lg-mobile lg:text-headline-md font-bold text-secondary mb-6">Sécurisez votre situation patrimoniale avant de décider.</h2>
+<p class="font-body-lg text-on-surface-variant mb-8">Succession, divorce, IFI, dossier judiciaire ou refinancement : bénéficiez d'un premier échange téléphonique gratuit pour cadrer votre dossier.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">call</span>
+<span class="font-body-md font-bold">Natalia : +33 6 00 00 00 00</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span class="font-body-md">Email : contact@natalia-expertise.fr</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">chat</span>
+<span class="font-body-md">WhatsApp : Disponible 7j/7</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 border border-outline-variant">
+<h3 class="font-label-caps text-label-caps text-on-surface tracking-widest uppercase mb-6">Rappel sous 24h — gratuit &amp; sans engagement</h3>
+<form class="space-y-4">
+<div>
+<label class="font-utility-sm text-utility-sm text-on-surface-variant block mb-1">Nom complet</label>
+<input class="w-full bg-surface border-0 border-b border-on-surface p-0 pb-2 focus:ring-0 focus:border-primary text-body-md" placeholder="Votre nom" type="text"/>
+</div>
+<div>
+<label class="font-utility-sm text-utility-sm text-on-surface-variant block mb-1">Téléphone</label>
+<input class="w-full bg-surface border-0 border-b border-on-surface p-0 pb-2 focus:ring-0 focus:border-primary text-body-md" placeholder="+33 6 00 00 00 00" type="tel"/>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 font-label-caps text-label-caps tracking-widest hover:bg-primary-container transition-colors mt-4" type="submit">Être rappelé</button>
+</form>
+</div>
+</div>
+</section></main>
+<!-- Footer -->
+<section class="bg-cream-paper py-xl px-lg border-b border-outline-variant">
+<div class="max-w-container-max mx-auto">
+<div class="mb-lg">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-4 block">FAQ</span>
+<h2 class="font-pt-serif text-display-lg-mobile lg:text-headline-md font-bold text-secondary">Questions Fréquentes</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-xl gap-y-lg">
+<!-- FAQ Item 1 -->
+<div class="space-y-2">
+<h3 class="font-pt-serif font-bold text-on-surface text-[18px]">Azur Life intervient-elle pour des propriétaires résidant à l'étranger ?</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Oui, Natalia parle couramment russe et anglais. L'intégralité de la mission peut être coordonnée à distance, avec un rapport livré numériquement et pouvant être traduit.</p>
+</div>
+<!-- FAQ Item 2 -->
+<div class="space-y-2">
+<h3 class="font-pt-serif font-bold text-on-surface text-[18px]">Quelle différence entre une estimation d'agence et une expertise immobilière ?</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">L'estimation d'agence est un avis commercial non contraignant. Le rapport d'expertise est juridiquement opposable devant les notaires, les tribunaux et l'administration fiscale, avec une méthodologie certifiée et une responsabilité professionnelle engagée.</p>
+</div>
+<!-- FAQ Item 3 -->
+<div class="space-y-2">
+<h3 class="font-pt-serif font-bold text-on-surface text-[18px]">Combien coûte une expertise immobilière sur la Côte d'Azur ?</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Le coût dépend de la complexité ; comptez entre 1 200 € et 2 500 € HT pour un appartement standard à Nice. La consultation téléphonique initiale pour définir le périmètre du dossier est gratuite.</p>
+</div>
+<!-- FAQ Item 4 -->
+<div class="space-y-2">
+<h3 class="font-pt-serif font-bold text-on-surface text-[18px]">Quel délai pour obtenir un rapport d'expertise ?</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Le délai standard est de 48 heures à 7 jours. Un service express en 24-48 heures est possible pour les dossiers judiciaires ou de succession urgents.</p>
+</div>
+<!-- FAQ Item 5 -->
+<div class="space-y-2">
+<h3 class="font-pt-serif font-bold text-on-surface text-[18px]">L'expertise est-elle valable devant les tribunaux et la cour d'appel d'Aix ?</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Oui, le rapport rédigé selon la charte de la CEEI et les principes du contradictoire est admissible devant toutes les juridictions françaises, y compris la Cour d'appel d'Aix-en-Provence.</p>
+</div>
+<!-- FAQ Item 6 -->
+<div class="space-y-2">
+<h3 class="font-pt-serif font-bold text-on-surface text-[18px]">Peut-on contester un redressement IFI grâce à votre rapport ?</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Oui, le rapport constitue une preuve probante dans un litige avec la DGFiP, grâce à un panel de comparables documenté, une datation précise et l'application motivée des abattements fiscalement admis.</p>
+</div>
+<!-- FAQ Item 7 -->
+<div class="space-y-2">
+<h3 class="font-pt-serif font-bold text-on-surface text-[18px]">Comment se déroule une mission d'expertise ?</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Appel de cadrage gratuit, visite sur site, collecte des données de marché, application des méthodologies d'évaluation, et livraison du rapport signé avec documentation complète (comparables, photos, plans, cadastre).</p>
+</div>
+</div>
+</div>
+</section><footer class="bg-inverse-surface text-inverse-on-surface py-xl px-lg">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start gap-xl">
+<div class="flex flex-col gap-4">
+<div class="font-display-lg-mobile text-display-lg-mobile tracking-tight">Natalia Expertise</div>
+<div class="font-body-md opacity-80">
+        Cabinet d'expertise immobilière indépendant / Beaulieu-sur-Mer · Alpes-Maritimes
+      </div>
+<div class="font-utility-sm opacity-60 mt-4">
+        © 2024 Natalia Expertise. Tous droits réservés.
+      </div>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4">
+<a class="font-label-caps text-label-caps hover:text-primary-fixed-dim transition-colors" href="#">Mentions légales</a>
+<a class="font-label-caps text-label-caps hover:text-primary-fixed-dim transition-colors" href="#">Confidentialité</a>
+<a class="font-label-caps text-label-caps hover:text-primary-fixed-dim transition-colors" href="#">Honoraires</a>
+<a class="font-label-caps text-label-caps hover:text-primary-fixed-dim transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

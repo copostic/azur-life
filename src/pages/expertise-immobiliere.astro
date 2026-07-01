@@ -1,0 +1,637 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import Hero from '~/components/Hero.astro';
+import ServiceCard from '~/components/ServiceCard.astro';
+import ProcessSteps from '~/components/ProcessSteps.astro';
+import FAQ from '~/components/FAQ.astro';
+import LeadForm from '~/components/LeadForm.astro';
+import ContactStrip from '~/components/ContactStrip.astro';
+import StickyMobileCTA from '~/components/StickyMobileCTA.astro';
+import CookieBanner from '~/components/CookieBanner.astro';
+
+import { fr } from '~/content/fr';
+import { SITE, ROUTES } from '~/lib/constants';
+import {
+  realEstateAgent,
+  servicesGraph,
+  faqPage,
+  breadcrumb,
+} from '~/lib/schema';
+
+const canonical = SITE.url + ROUTES.fr;
+
+const jsonLd = [
+  realEstateAgent('fr'),
+  ...servicesGraph(
+    [
+      {
+        name: 'Expertise immobilière — succession, partage, donation',
+        description: "Évaluation de valeur vénale opposable au notaire, aux héritiers et à l'administration fiscale.",
+        url: canonical + '?intent=succession',
+      },
+      {
+        name: 'Expertise immobilière — IFI',
+        description: "Rapport opposable à l'administration fiscale pour la déclaration de l'IFI.",
+        url: canonical + '?intent=ifi',
+      },
+      {
+        name: 'Expertise immobilière — divorce',
+        description: 'Évaluation équitable du bien commun, recevable par le juge et le notaire.',
+        url: canonical + '?intent=divorce',
+      },
+      {
+        name: 'Expertise immobilière — judiciaire & contentieux',
+        description: 'Expertise produite en demande ou en défense. Rapport opposable, méthodologie tracée.',
+        url: canonical + '?intent=judiciaire',
+      },
+    ],
+    'fr'
+  ),
+  faqPage(fr.faq.items.map((i) => ({ q: i.q, a: i.a }))),
+  breadcrumb([
+    { name: 'Accueil', url: SITE.url + '/' },
+    { name: 'Expertise immobilière', url: canonical },
+  ]),
+];
+---
+
+<BaseLayout
+  lang="fr"
+  title={fr.meta.title}
+  description={fr.meta.description}
+  canonical={canonical}
+  ogImage={fr.meta.ogImage}
+  jsonLd={jsonLd}
+>
+  <Header
+    slot="header"
+    metaLine={fr.header.metaLine}
+    primary="call"
+    primaryLabel={fr.header.ctaCall}
+    secondaryLabel={fr.header.ctaSecondary}
+    secondaryHref="#lead-form"
+  />
+
+  <!-- HERO -->
+  <Hero
+    variants={fr.hero.variants}
+    defaultVariant={fr.hero.variants.default}
+    secondaryLabel={fr.hero.ctaForm}
+    formAnchor="#lead-form"
+  />
+
+  <!-- STATS BAR -->
+  <section class="stats-bar section-warm">
+    <div class="container-page">
+      <div class="stats-grid">
+        {fr.trustStats.map(s => (
+          <div class="stat-item">
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CURATED EXPERTISE - Asymmetric -->
+  <section class="section section-cream" id="expertise">
+    <div class="container-page">
+      <div class="text-center reveal" style="margin-bottom: clamp(3rem, 6vw, 5rem);">
+        <span class="eyebrow">SAVOIR-FAIRE</span>
+        <h2>Expertise sur Mesure</h2>
+        <hr class="divider divider-center" />
+      </div>
+
+      <!-- Row 1: text left, image right -->
+      <div class="expertise-row reveal">
+        <div class="expertise-text">
+          <span class="eyebrow">01 / PATRIMOINE & HÉRITAGE</span>
+          <h3>Succession & Donation</h3>
+          <p>Naviguer les complexités de l'indivision nécessite une évaluation incontestable. Notre cabinet délivre des rapports vénaux opposables qui sécurisent les partages entre héritiers et préviennent les contentieux avec l'administration fiscale.</p>
+          <p>Méthodologie conforme DGFiP, recevabilité notariale garantie, délai express disponible.</p>
+        </div>
+        <div class="expertise-img">
+          <img src="/img/interior-elegant.jpg" alt="Intérieur élégant Côte d'Azur" />
+        </div>
+      </div>
+
+      <!-- Row 2: image left, text right -->
+      <div class="expertise-row reverse reveal">
+        <div class="expertise-img">
+          <img src="/img/villa-riviera.jpg" alt="Villa Riviera" />
+        </div>
+        <div class="expertise-text">
+          <span class="eyebrow">02 / STRUCTURATION PATRIMONIALE</span>
+          <h3>IFI & Optimisation</h3>
+          <p>La déclaration IFI exige une valorisation défendable. Nos rapports certifiés suivent la méthodologie stricte de l'administration fiscale, vous protégeant contre les redressements futurs tout en optimisant votre position déclarative.</p>
+          <p>Panel de transactions comparables, ajustements techniques documentés, conformité totale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IFI PROMO -->
+  <section class="section section-warm">
+    <div class="container-page">
+      <div class="ifi-banner reveal">
+        <div>
+          <span class="eyebrow">{fr.ifiPromo.kicker}</span>
+          <h2>{fr.ifiPromo.title}</h2>
+          <p>{fr.ifiPromo.body}</p>
+        </div>
+        <a href="#lead-form" class="btn btn-primary">{fr.ifiPromo.cta}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE CARDS -->
+  <section class="section section-cream" id="services">
+    <div class="container-page">
+      <header class="section-head reveal">
+        <p class="eyebrow">{fr.serviceCardsKicker}</p>
+        <h2>{fr.serviceCardsTitle}</h2>
+        <p class="section-lead">{fr.serviceCardsLead}</p>
+      </header>
+      <div class="cards-grid">
+        {fr.serviceCards.map((c) => (
+          <ServiceCard
+            ref={c.ref}
+            anchor={c.anchor}
+            intent={c.intent}
+            title={c.title}
+            body={c.body}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET DATA -->
+  <section class="section section-warm">
+    <div class="container-page">
+      <header class="section-head reveal">
+        <p class="eyebrow">{fr.marketData.kicker}</p>
+        <h2>{fr.marketData.title}</h2>
+        <p class="section-lead">{fr.marketData.lead}</p>
+      </header>
+      <div class="market-stats">
+        {fr.marketData.stats.map((s) => (
+          <div class="market-stat reveal">
+            <span class="market-value">{s.value}</span>
+            <h3 class="market-label">{s.label}</h3>
+            <p class="market-note">{s.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section class="section section-cream" id="methodology">
+    <div class="container-page">
+      <div class="methodology-grid">
+        <div class="methodology-img reveal">
+          <img src="/img/villa-modern.jpg" alt="Modern Villa" />
+        </div>
+        <div class="methodology-content reveal">
+          <p class="eyebrow">{fr.process.kicker}</p>
+          <h2>{fr.process.title}</h2>
+          <ProcessSteps steps={fr.process.steps} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="section section-warm" id="cases">
+    <div class="container-page">
+      <header class="section-head reveal">
+        <p class="eyebrow">{fr.caseStudies.kicker}</p>
+        <h2>{fr.caseStudies.title}</h2>
+      </header>
+      <div class="cases-grid">
+        {fr.caseStudies.cases.map((c) => (
+          <article class="case-card reveal">
+            <div class="case-img">
+              <img src={c.image} alt={c.title} />
+              <span class="case-tag">{c.tag}</span>
+            </div>
+            <div class="case-content">
+              <h3>{c.title}</h3>
+              <div class="case-section">
+                <h4>Contexte</h4>
+                <p>{c.context}</p>
+              </div>
+              <div class="case-section">
+                <h4>Intervention</h4>
+                <p>{c.intervention}</p>
+              </div>
+              <div class="case-section">
+                <h4>Résultat</h4>
+                <p>{c.result}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST INDICATORS -->
+  <section class="section section-cream">
+    <div class="container-page">
+      <header class="section-head reveal">
+        <p class="eyebrow">{fr.whySection.kicker}</p>
+        <h2>{fr.whySection.title}</h2>
+      </header>
+      <div class="trust-grid">
+        {fr.whySection.blocks.map((b) => (
+          <div class="trust-block reveal">
+            <h3>{b.title}</h3>
+            <p>{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM SECTION - navy bg -->
+  <section class="section section-navy" id="lead-form">
+    <div class="container-page">
+      <header class="section-head reveal" style="color: white; max-width: 640px; margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="color: var(--color-gold-light);">{fr.form.kicker}</p>
+        <h2 style="color: white;">{fr.form.title}</h2>
+        <p class="section-lead" style="color: rgba(255, 255, 255, 0.85);">{fr.form.lead}</p>
+      </header>
+      <LeadForm
+        lang="fr"
+        labels={{
+          firstName: fr.form.fields.firstName,
+          lastName: fr.form.fields.lastName,
+          phone: fr.form.fields.phone,
+          email: fr.form.fields.email,
+          type: fr.form.fields.type,
+          message: fr.form.fields.message,
+          consent: fr.form.fields.consent,
+        }}
+        types={fr.form.types}
+        submitLabel={fr.form.submit}
+        successMsg={fr.form.success}
+        errorMsg={fr.form.error}
+        altLabel={fr.form.altCall}
+        formId="lead-fr"
+      />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-cream" id="faq">
+    <div class="container-page">
+      <header class="section-head reveal">
+        <p class="eyebrow">{fr.faq.kicker}</p>
+        <h2>{fr.faq.title}</h2>
+      </header>
+      <FAQ items={fr.faq.items} />
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <ContactStrip
+    title={fr.contact.title}
+    addressLine={fr.contact.addressLine}
+    hours={fr.contact.hours}
+    mapButton={fr.contact.mapButton}
+  />
+
+  <Footer
+    slot="footer"
+    tagline={fr.footer.tagline}
+    crossLinkLabel={fr.footer.crossLinkLabel}
+    crossLinkHref={fr.footer.crossLinkHref}
+    legal={fr.footer.legal}
+    languages={fr.footer.languages}
+    copyright={fr.footer.copyright}
+  />
+
+  <StickyMobileCTA
+    slot="sticky"
+    primary="call"
+    callLabel={fr.stickyMobile.call}
+    whatsappLabel={fr.stickyMobile.whatsapp}
+    formLabel={fr.stickyMobile.form}
+    formAnchor="#lead-form"
+  />
+
+  <CookieBanner
+    slot="cookies"
+    text={fr.cookies.text}
+    accept={fr.cookies.accept}
+    reject={fr.cookies.reject}
+  />
+</BaseLayout>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  .section-head {
+    margin-bottom: 3rem;
+    max-width: 720px;
+  }
+  .section-head h2 {
+    margin: 0.6rem 0 0.8rem;
+  }
+  .section-lead {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  .text-center { text-align: center; }
+
+  /* Stats Bar */
+  .stats-bar {
+    padding-block: clamp(2.5rem, 4vw, 3.5rem);
+    border-bottom: 1px solid var(--color-outline);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Expertise Asymmetric */
+  .expertise-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: center;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .expertise-row.reverse {
+    direction: rtl;
+  }
+  .expertise-row.reverse > * {
+    direction: ltr;
+  }
+  .expertise-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .expertise-text h3 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--color-navy);
+    margin: 0;
+  }
+  .expertise-text p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 300;
+    color: var(--color-muted);
+  }
+  .expertise-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .expertise-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+  @media (max-width: 920px) {
+    .expertise-row {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .expertise-row.reverse {
+      direction: ltr;
+    }
+  }
+
+  /* IFI Banner */
+  .ifi-banner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 3rem;
+    background: white;
+    border: 1px solid var(--color-outline);
+  }
+  .ifi-banner h2 {
+    margin: 0.6rem 0 0.8rem;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+  }
+  .ifi-banner p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+    font-weight: 300;
+    color: var(--color-muted);
+    max-width: 64ch;
+  }
+  @media (max-width: 780px) {
+    .ifi-banner {
+      grid-template-columns: 1fr;
+      padding: 2rem;
+    }
+  }
+
+  /* Service Cards */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Market Data */
+  .market-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+  }
+  .market-stat {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--color-gold);
+  }
+  .market-value {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .market-label {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--color-navy);
+    margin: 0 0 0.6rem;
+  }
+  .market-note {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: var(--color-muted);
+  }
+
+  /* Methodology */
+  .methodology-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .methodology-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .methodology-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+  .methodology-content h2 {
+    margin: 0.6rem 0 2rem;
+  }
+  @media (max-width: 920px) {
+    .methodology-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Case Studies */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 2rem;
+  }
+  .case-card {
+    background: white;
+    border: 1px solid var(--color-outline);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .case-img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  .case-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .case-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-navy);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .case-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .case-content h3 {
+    font-size: 1.5rem;
+    color: var(--color-navy);
+    margin: 0;
+  }
+  .case-section h4 {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+    margin: 0 0 0.4rem;
+  }
+  .case-section p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: var(--color-muted);
+  }
+  @media (max-width: 480px) {
+    .cases-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Trust Grid */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem;
+  }
+  .trust-block {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-outline);
+  }
+  .trust-block h3 {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin: 0 0 0.6rem;
+  }
+  .trust-block p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    font-weight: 300;
+    color: var(--color-muted);
+  }
+</style>

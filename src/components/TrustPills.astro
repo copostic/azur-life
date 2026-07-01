@@ -1,0 +1,30 @@
+---
+interface Props {
+  items: readonly string[];
+}
+const { items } = Astro.props;
+---
+
+<ul class="trust-pills" role="list">
+  {items.map((item) => (
+    <li>
+      <span class="pill">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 8.5 L6.5 12 L13 4.5" />
+        </svg>
+        {item}
+      </span>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .trust-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+</style>
