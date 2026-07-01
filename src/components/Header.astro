@@ -1,6 +1,11 @@
 ---
 import { PHONE, WHATSAPP } from '~/lib/constants';
 
+interface NavLink {
+  label: string;
+  href: string;
+}
+
 interface Props {
   metaLine: string;
   primary: 'call' | 'whatsapp';
@@ -8,6 +13,7 @@ interface Props {
   secondaryLabel: string;
   secondaryHref?: string;
   waPrefill?: string;
+  nav?: readonly NavLink[];
 }
 
 const {
@@ -17,6 +23,7 @@ const {
   secondaryLabel,
   secondaryHref = '#lead-form',
   waPrefill = '',
+  nav = [],
 } = Astro.props;
 
 const primaryHref =
@@ -28,13 +35,11 @@ const primaryHref =
 <nav class="site-header">
   <div class="container-page header-inner">
     <a href="/" class="brand" aria-label="AZUR LIFE — Accueil">
-      AZUR LIFE
+      <img class="h-8" src="/img/logo-azur-life-blue.png" alt="Azur Life Expertise Immobilière Logo" />
     </a>
 
     <div class="header-nav">
-      <a href="#expertise">Expertise</a>
-      <a href="#cases">Portfolio</a>
-      <a href="#lead-form">Contact</a>
+      {nav.map((l) => <a href={l.href}>{l.label}</a>)}
     </div>
 
     <div class="header-cta">

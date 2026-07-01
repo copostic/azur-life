@@ -20,6 +20,14 @@
   --color-error: #BA1A1A;
   --color-success: #1F5132;
 
+  /* Heritage Riviera — RU property-management palette */
+  --color-riviera: #296767;   /* Mediterranean teal accent */
+  --color-seal: #871319;      /* wax-seal red */
+  --color-brass: #A8884A;     /* brushed brass */
+  --color-paper: #FCF8F9;     /* warm paper section bg */
+  --color-limestone: #F0EDEE; /* limestone alt section bg */
+  --color-mist: #E5E2E3;      /* soft mist border */
+
   /* Type */
   --font-display: var(--font-display), Georgia, "Times New Roman", serif;
   --font-body: var(--font-body), system-ui, "Segoe UI", sans-serif;
@@ -156,6 +164,8 @@
   .section-cream { background: var(--color-cream); }
   .section-warm { background: var(--color-cream-warm); }
   .section-navy { background: var(--color-navy); color: white; }
+  .section-paper { background: var(--color-paper); }
+  .section-limestone { background: var(--color-limestone); }
 
   .divider {
     width: 64px;

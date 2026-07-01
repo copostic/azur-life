@@ -7,6 +7,7 @@ import ServiceCard from '~/components/ServiceCard.astro';
 import ProcessSteps from '~/components/ProcessSteps.astro';
 import FAQ from '~/components/FAQ.astro';
 import LeadForm from '~/components/LeadForm.astro';
+import ExpertBadge from '~/components/ExpertBadge.astro';
 import ContactStrip from '~/components/ContactStrip.astro';
 import StickyMobileCTA from '~/components/StickyMobileCTA.astro';
 import CookieBanner from '~/components/CookieBanner.astro';
@@ -72,6 +73,7 @@ const jsonLd = [
     primaryLabel={fr.header.ctaCall}
     secondaryLabel={fr.header.ctaSecondary}
     secondaryHref="#lead-form"
+    nav={fr.header.nav}
   />
 
   <!-- HERO -->
@@ -80,7 +82,16 @@ const jsonLd = [
     defaultVariant={fr.hero.variants.default}
     secondaryLabel={fr.hero.ctaForm}
     formAnchor="#lead-form"
-  />
+  >
+    <ExpertBadge
+      slot="badge"
+      tone="light"
+      align="center"
+      caption={fr.expertBadge.caption}
+      sub={fr.expertBadge.sub}
+      alt={fr.expertBadge.alt}
+    />
+  </Hero>
 
   <!-- STATS BAR -->
   <section class="stats-bar section-warm">
@@ -265,6 +276,15 @@ const jsonLd = [
         <p class="eyebrow" style="color: var(--color-gold-light);">{fr.form.kicker}</p>
         <h2 style="color: white;">{fr.form.title}</h2>
         <p class="section-lead" style="color: rgba(255, 255, 255, 0.85);">{fr.form.lead}</p>
+        <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+          <ExpertBadge
+            tone="light"
+            align="center"
+            caption={fr.expertBadge.caption}
+            sub={fr.expertBadge.sub}
+            alt={fr.expertBadge.alt}
+          />
+        </div>
       </header>
       <LeadForm
         lang="fr"
@@ -282,6 +302,7 @@ const jsonLd = [
         successMsg={fr.form.success}
         errorMsg={fr.form.error}
         altLabel={fr.form.altCall}
+        confidentialLabel={fr.form.confidential}
         formId="lead-fr"
       />
     </div>

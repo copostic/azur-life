@@ -20,6 +20,17 @@ export const fr = {
     metaLine: 'Beaulieu-sur-Mer · French Riviera',
     ctaCall: 'Appelez-nous',
     ctaSecondary: 'Consultation privée',
+    nav: [
+      { label: 'Expertise', href: '#expertise' },
+      { label: 'Portfolio', href: '#cases' },
+      { label: 'Contact', href: '#lead-form' },
+    ],
+  },
+
+  expertBadge: {
+    caption: 'Expert judiciaire',
+    sub: 'près la Cour d\'appel<br>d\'Aix-en-Provence',
+    alt: 'Sceau officiel — Cour d\'appel, Expert judiciaire',
   },
 
   hero: {
@@ -151,7 +162,7 @@ export const fr = {
 
   process: {
     kicker: 'RIGUEUR TECHNIQUE',
-    title: 'Méthodologies d\'Appraisal',
+    title: 'Comment nous estimons votre bien',
     steps: [
       {
         n: 'I',
@@ -166,7 +177,7 @@ export const fr = {
       {
         n: 'III',
         title: 'Valeur de Remplacement',
-        body: 'Pour les biens atypiques (Villas Belle Époque, immeubles entiers). Calcul basé sur le coût de reconstruction à neuf diminué de la vétusté.',
+        body: 'Pour les biens rares ou atypiques (Villas Belle Époque, immeubles entiers). Calcul basé sur le coût de reconstruction à neuf diminué de la vétusté.',
       },
     ],
   },
@@ -176,10 +187,11 @@ export const fr = {
     title: 'Analyse Micro-Marché Nice 2026',
     lead: 'Les moyennes de quartier sont souvent trompeuses. Chaque rapport d\'expertise repose sur une analyse granulaire du micro-marché, isolant les caractéristiques intrinsèques de votre bien.',
     stats: [
-      { value: '10 850 €/m²', label: 'Prix Moyen Appartement Nice', note: 'Données prévisionnelles 2026, secteurs résidentiels premium.' },
-      { value: '15 400 €/m²', label: 'Prix Moyen Maison & Villa', note: 'Forte disparité selon l\'exposition et la vue mer.' },
-      { value: '1 à 4x', label: 'Amplitude de Prix', note: 'Ratio entre les quartiers standard et les enclaves de prestige (Cimiez, Mont Boron).' },
+      { value: '5 200 €/m²', label: 'Prix Moyen Appartement Nice', note: 'Données prévisionnelles 2026, secteurs résidentiels premium.' },
+      { value: '6 400 €/m²', label: 'Prix Moyen Maison & Villa', note: 'Forte disparité selon l\'exposition et la vue mer.' },
+      { value: '1 à 4-5x', label: 'Amplitude de Prix', note: 'Ratio entre les quartiers standard et les enclaves de prestige (Cimiez, Mont Boron).' },
     ],
+    source: 'Source :  DVF, Notaires de France, INSEE, estimations MeilleursAgents.',
   },
 
   caseStudies: {
@@ -208,7 +220,7 @@ export const fr = {
   ifiPromo: {
     kicker: 'SAISONNIER : JANVIER À JUIN',
     title: 'Expertise IFI Côte d\'Azur — Déclaration 2025–2026',
-    body: 'La firme délivre des rapports d\'expertise certifiés pour vos déclarations IFI, avec déductions fiscalement admises et une méthodologie conforme à la DGFiP. Livraison express disponible avant la date limite de déclaration.',
+    body: 'L\'agence délivre des rapports d\'expertise certifiés pour vos déclarations IFI, avec déductions fiscalement admises et une méthodologie conforme à la DGFiP. Livraison express disponible avant la date limite de déclaration.',
     cta: 'Demander mon rapport IFI',
   },
 
@@ -261,6 +273,7 @@ export const fr = {
       consent:
         'J\'accepte que mes informations soient utilisées pour répondre à ma demande. Aucune diffusion à des tiers. RGPD.',
     },
+    confidential: 'Confidentialité absolue garantie',
     types: [
       { v: '', label: 'Sélectionnez…' },
       { v: 'succession', label: 'Succession · partage · donation' },
@@ -273,7 +286,7 @@ export const fr = {
     submit: 'Envoyer ma demande',
     success: 'Demande reçue. Nous vous recontactons sous 24h ouvrées au numéro indiqué.',
     error: 'Une erreur est survenue. Merci d\'appeler directement ou de réessayer dans quelques instants.',
-    altCall: 'Préférez le téléphone ?',
+    altCall: 'Vous préférez échanger par téléphone ? Appelez Natalia au ',
   },
 
   contact: {

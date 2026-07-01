@@ -47,6 +47,7 @@ const variantsJson = variants ? JSON.stringify(variants) : null;
     <div class="hero-cta">
       <a href={formAnchor} class="btn btn-hero">{secondaryLabel}</a>
     </div>
+    <slot name="badge" />
   </div>
 </section>
 
@@ -152,6 +153,9 @@ const variantsJson = variants ? JSON.stringify(variants) : null;
     display: flex;
     justify-content: center;
     gap: 1rem;
+  }
+  .hero-content :global(.expert-badge) {
+    margin-top: 1.75rem;
   }
   .btn-hero {
     background: white;

@@ -52,6 +52,7 @@ const waPrefill = ru.hero.waPrefill;
     secondaryLabel={ru.header.ctaSecondary}
     secondaryHref="#lead-form"
     waPrefill={waPrefill}
+    nav={ru.header.nav}
   />
 
   <!-- HERO -->
@@ -72,6 +73,20 @@ const waPrefill = ru.hero.waPrefill;
   >
     <StewardshipVilla slot="illustration" />
   </Hero>
+
+  <!-- STATS / TRUST BAR -->
+  <section class="stats-bar section-limestone">
+    <div class="container-page">
+      <div class="stats-grid">
+        {ru.trustStats.map((s) => (
+          <div class="stat-item">
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- ПУНКТ 01 — что это, и чем не является -->
   <section class="section section-paper" id="not-airbnb">
@@ -218,6 +233,7 @@ const waPrefill = ru.hero.waPrefill;
         errorMsg={ru.form.error}
         altLabel={ru.form.altWa}
         altWaPrefill={waPrefill}
+        confidentialLabel={ru.form.confidential}
         formId="lead-ru"
       />
     </div>
@@ -259,6 +275,32 @@ const waPrefill = ru.hero.waPrefill;
 </BaseLayout>
 
 <style>
+  .stats-bar {
+    padding-block: clamp(2rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--color-mist);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem 2rem;
+    text-align: center;
+  }
+  .stat-item { display: flex; flex-direction: column; gap: 0.35rem; }
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    font-weight: 400;
+    color: var(--color-riviera);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--color-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
   .section-head { margin-bottom: 2.4rem; max-width: 760px; }
   .section-head h2 { margin: 0.6rem 0 0.8rem; }
   .section-lead {
