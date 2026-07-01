@@ -261,7 +261,7 @@ Ils agrandissent l'annonce, montent le CTR *et* le Quality Score. Une annonce sa
 | Liens annexes ×4 | Succession / IFI / Judiciaire / Devis | Campagne |
 | Accroches ×6-8 | Master II Droit · 6 Langues · Indépendant · Réponse 48h · Confidentialité · Nice-Monaco | Campagne |
 | Extraits structurés | « Services » : Succession, IFI, Divorce, Judiciaire, Crédit, Cession parts | Campagne |
-| Asset d'appel | 06 23 53 19 59 + suivi d'appel | Campagne |
+| Asset d'appel | 06 23 53 19 55 + suivi d'appel | Campagne |
 | Asset de lieu | Fiche Google Business | Compte |
 | Formulaire prospect | Nom, Tél, Email, Type d'expertise | Campagne |
 

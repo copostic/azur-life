@@ -15,7 +15,7 @@ Faites l'expérience d'une agence qui place l'humain au cœur de tout.
 #### NATALIA VINOGRADOVA
 GÉRANTE
 natalia@azur-life.com
-+33 6 23 53 19 53
++33 6 23 53 19 55
 Diplômée de Master II de droit immobilier et de l'urbanisme, Natalia met un point d'honneur à proposer les services de transactions, locations saisonnières, property management ou expertise immobilière avec l'ambition de satisfaire une clientèle internationale exigeante. Elle crée l’agence en 2015.
 A l'image de Natalia Azur Life est une agence dynamique, défendant des valeurs d'excellence, de loyauté, de détermination et de discrétion.
 Natalia parle Russe, Français et Anglais.

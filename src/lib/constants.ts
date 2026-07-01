@@ -23,16 +23,16 @@ export const SITE = {
 // - phone: the CALL ASSET number used in Google Ads (call-attribution parity)
 // - phoneOffice: the agency switchboard (from azur life.md)
 export const PHONE = {
-  raw: env.PUBLIC_PHONE || '+33623531959',
-  display: env.PUBLIC_PHONE_DISPLAY || '06 23 53 19 59',
+  raw: env.PUBLIC_PHONE || '+33623531955',
+  display: env.PUBLIC_PHONE_DISPLAY || '06 23 53 19 55',
   office: env.PUBLIC_PHONE_OFFICE || '+33493160631',
   officeDisplay: env.PUBLIC_PHONE_OFFICE_DISPLAY || '04 93 16 06 31',
 } as const;
 
 export const WHATSAPP = {
-  raw: env.PUBLIC_WHATSAPP || '33623531959',
+  raw: env.PUBLIC_WHATSAPP || '33623531955',
   url: (msg = ''): string => {
-    const number = env.PUBLIC_WHATSAPP || '33623531959';
+    const number = env.PUBLIC_WHATSAPP || '33623531955';
     const q = msg ? `?text=${encodeURIComponent(msg)}` : '';
     return `https://wa.me/${number}${q}`;
   },
