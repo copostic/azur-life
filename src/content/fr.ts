@@ -10,7 +10,7 @@ export interface HeroVariant {
 
 export const fr = {
   meta: {
-    title: 'Expertise Immobilière Côte d\'Azur — Natalia Expertise | Azur Life',
+    title: 'Expertise Immobilière Côte d\'Azur | Azur Life',
     description:
       'Cabinet d\'expertise immobilière indépendant à Beaulieu-sur-Mer. Rapports certifiés pour successions, IFI, divorces et procédures judiciaires. 6 langues, remise sous 48h.',
     ogImage: '/og/fr-expertise-cover.jpg',
@@ -277,9 +277,9 @@ export const fr = {
   },
 
   contact: {
-    title: 'Natalia Expertise',
+    title: 'Azur Life Expertise',
     addressLine: '46 boulevard Leclerc · 06310 Beaulieu-sur-Mer',
-    hours: 'Lun–Sam · 9h–19h',
+    hours: 'Lun-Sam · 9h-19h',
     mapButton: 'Afficher la carte',
   },
 
